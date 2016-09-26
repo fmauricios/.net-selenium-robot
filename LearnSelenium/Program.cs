@@ -11,7 +11,6 @@ namespace LearnSelenium
 {
     class Program
     {
-        IWebDriver driver = new FirefoxDriver();
 
         static void Main(string[] args)
         {
@@ -21,32 +20,34 @@ namespace LearnSelenium
         [SetUp]
         public void Initialize()
         {
+            PropertiesCollection.driver = new FirefoxDriver();
+
             string uri = "http://www.executeautomation.com/demosite/index.html?UserName=&Password=&Login=Login";
-            driver.Navigate().GoToUrl(uri);
+            PropertiesCollection.driver.Navigate().GoToUrl(uri);
         }
 
         [Test]
         public void ExecuteTest()
         {
             // Title
-            SeleniumSetMethods.SelectDropDown(driver, "TitleId", "Mr.", "Name");
+            SeleniumSetMethods.SelectDropDown("TitleId", "Mr.", PropertyType.Id);
 
             // Initial
-            SeleniumSetMethods.EnterText(driver, "Initial", "Mauricio", "Name");
+            SeleniumSetMethods.EnterText("Initial", "Mauricio", PropertyType.Name);
 
-            Console.WriteLine("The value from my Title is: " + SeleniumGetMethods.GetText(driver, "TitleId", "Id"));
+            Console.WriteLine("The value from my Title is: " + SeleniumGetMethods.GetTextFromDropdownList("TitleId", PropertyType.Id));
 
-            Console.WriteLine("The value from my Initial is: " + SeleniumGetMethods.GetText(driver, "Initial", "Name"));
+            Console.WriteLine("The value from my Initial is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name));
 
             // Click
-            SeleniumSetMethods.Click(driver, "Save", "Name");
+            SeleniumSetMethods.Click("Save", PropertyType.Name);
 
         }
 
         [TearDown]
         public void CleanUp()
         {
-            driver.Close();
+            PropertiesCollection.driver.Close();
         }
     }
 }
