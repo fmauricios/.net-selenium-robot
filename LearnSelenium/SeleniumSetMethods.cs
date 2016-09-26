@@ -27,7 +27,9 @@ namespace LearnSelenium
                 driver.FindElement(By.Name(element)).SendKeys(value);
         }
 
-        // Click into a button, checkbox, option
+        /*
+         * Click into a button, checkbox, option
+        */
 
         public static void Click(IWebDriver driver, string element, string elementType)
         {
@@ -38,7 +40,9 @@ namespace LearnSelenium
                 driver.FindElement(By.Name(element)).Click();
         }
 
-        // Selection a dropdown control
+        /*
+         * Selection a dropdown control
+        */
 
         public static void SelectDropDown(IWebDriver driver, string element, string value, string elementType)
         {
