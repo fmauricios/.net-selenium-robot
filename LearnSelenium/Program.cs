@@ -29,18 +29,29 @@ namespace LearnSelenium
         [Test]
         public void ExecuteTest()
         {
+            /*
+             * Initialize the page by calling it's reference
+            */
+
+            PageObject page = new PageObject();
+
+            page.txtInitial.SendKeys("Crystal Lang");
+            page.btnSave.Click();
+
+
+
             // Title
-            SeleniumSetMethods.SelectDropDown("TitleId", "Mr.", PropertyType.Id);
+            //SeleniumSetMethods.SelectDropDown("TitleId", "Mr.", PropertyType.Id);
 
             // Initial
-            SeleniumSetMethods.EnterText("Initial", "Mauricio", PropertyType.Name);
+            //SeleniumSetMethods.EnterText("Initial", "Mauricio", PropertyType.Name);
 
-            Console.WriteLine("The value from my Title is: " + SeleniumGetMethods.GetTextFromDropdownList("TitleId", PropertyType.Id));
+            //Console.WriteLine("The value from my Title is: " + SeleniumGetMethods.GetTextFromDropdownList("TitleId", PropertyType.Id));
 
-            Console.WriteLine("The value from my Initial is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name));
+            //Console.WriteLine("The value from my Initial is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name));
 
             // Click
-            SeleniumSetMethods.Click("Save", PropertyType.Name);
+            //SeleniumSetMethods.Click("Save", PropertyType.Name);
 
         }
 
