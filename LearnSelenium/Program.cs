@@ -22,37 +22,19 @@ namespace LearnSelenium
         {
             PropertiesCollection.driver = new FirefoxDriver();
 
-            string uri = "http://www.executeautomation.com/demosite/index.html?UserName=&Password=&Login=Login";
+            string uri = "http://www.executeautomation.com/demosite/Login.html";
             PropertiesCollection.driver.Navigate().GoToUrl(uri);
         }
 
         [Test]
         public void ExecuteTest()
         {
-            /*
-             * Initialize the page by calling it's reference
-            */
+            /* Login to application */
 
-            PageObject page = new PageObject();
+            LoginPageObject loginPage = new LoginPageObject();
+            EAPageObject pageEA = loginPage.Login("mauricio", "123456");
 
-            page.txtInitial.SendKeys("Crystal Lang");
-            page.btnSave.Click();
-
-
-
-            // Title
-            //SeleniumSetMethods.SelectDropDown("TitleId", "Mr.", PropertyType.Id);
-
-            // Initial
-            //SeleniumSetMethods.EnterText("Initial", "Mauricio", PropertyType.Name);
-
-            //Console.WriteLine("The value from my Title is: " + SeleniumGetMethods.GetTextFromDropdownList("TitleId", PropertyType.Id));
-
-            //Console.WriteLine("The value from my Initial is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name));
-
-            // Click
-            //SeleniumSetMethods.Click("Save", PropertyType.Name);
-
+            pageEA.FillUserForm("KK", "Mauricio", "Andres");
         }
 
         [TearDown]
